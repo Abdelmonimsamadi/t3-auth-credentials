@@ -1,8 +1,14 @@
-import { type NextPage } from "next";
+// import { type NextPage } from "next";
 import { type FormEventHandler, useState } from "react";
 import { trpc } from "../utils/trpc";
 
-const Task: NextPage = ({ todo }) => {
+interface Todo {
+  id: string;
+  task: string;
+  completed: boolean;
+}
+
+const Task = ({ todo }: { todo: Todo }) => {
   const util = trpc.useContext();
   const [input, setInput] = useState(todo.task);
   const [isEditing, setIsEditing] = useState(false);
